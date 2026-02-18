@@ -28,6 +28,7 @@ public class PalindromeCheckerApp {
      *
      * @param args Command-line arguments
      */
+    ///
     public static void main(String[] args) {
 
         // 1. Store a predefined string
