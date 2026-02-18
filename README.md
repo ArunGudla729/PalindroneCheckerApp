@@ -1,4 +1,14 @@
 # PalindroneCheckerApp
-# UseCase2PalindromeCheckerApp – README
+Palindrome Checker Application
 
-This application demonstrates a simple palindrome validation in Java using a hardcoded string value (`"madam"`). It compares characters from both ends of the string by incrementing a left pointer and decrementing a right pointer until they meet, determining whether the string reads the same forward and backward. The program introduces fundamental string comparison logic without using advanced data structures and prints the result to the console indicating whether the predefined text is a palindrome or not.
+This project demonstrates multiple approaches to validating whether a string is a palindrome in Java. Each use case introduces a different technique to reinforce fundamental programming concepts.
+
+Use Case 2 – Direct Character Comparison
+
+Validates a hardcoded string by comparing characters from both ends using a two-pointer approach. It introduces basic string traversal and conditional logic without additional data structures.
+
+Use Case 3 – Reverse String Based Validation
+
+Checks whether a string is a palindrome by reversing it and comparing the reversed string with the original. This method introduces transformation-based validation and reinforces loop control and string manipulation concepts.
+
+The project is structured progressively to build foundational logic before introducing more advanced techniques.ABCDEF
