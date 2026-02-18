@@ -1,30 +1,30 @@
 /**
  * =========================================================
- * MAIN CLASS - UseCase2PalindromeCheckerApp
+ * MAIN CLASS - UseCase3PalindromeCheckerApp
  * =========================================================
  *
- * Use Case 2: Hardcoded Palindrome Validation
+ * Use Case 3: Reverse String Based Palindrome Check
  *
  * Description:
- * This class demonstrates basic palindrome validation
- * using a hardcoded string value.
+ * This class checks whether a string is a palindrome
+ * by reversing the string and comparing it with
+ * the original value.
  *
  * At this stage, the application:
- * - Stores a predefined string
- * - Compares characters from both ends
- * - Determines whether the string is a palindrome
- * - Displays the result on the console
+ * - Iterates the string in reverse order
+ * - Builds a reversed version
+ * - Compares original and reversed strings
+ * - Displays the validation result
  *
- * This use case introduces fundamental comparison logic
- * before using advanced data structures.
+ * This introduces transformation-based validation.
  *
- * ArunSriramGudla
- * @version 2.0
+ * @author Developer
+ * @version 3.0
  */
-public class PalindromeCheckerApp {
+public class UseCase3PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC2.
+     * Application entry point for UC3.
      *
      * @param args Command-line arguments
      */
@@ -33,21 +33,16 @@ public class PalindromeCheckerApp {
         // 1. Store a predefined string
         String text = "madam";
 
-        // 2. Compare characters from both ends
-        boolean isPalindrome = true;
-        int left = 0;
-        int right = text.length() - 1;
-
-        while (left < right) {
-            if (text.charAt(left) != text.charAt(right)) {
-                isPalindrome = false;
-                break;
-            }
-            left++;
-            right--;
+        // 2. Reverse the string
+        String reversed = "";
+        for (int i = text.length() - 1; i >= 0; i--) {
+            reversed += text.charAt(i);
         }
 
-        // 3. Display the result
+        // 3. Compare original and reversed strings
+        boolean isPalindrome = text.equals(reversed);
+
+        // 4. Display result
         if (isPalindrome) {
             System.out.println(text + " is a palindrome.");
         } else {
@@ -55,4 +50,3 @@ public class PalindromeCheckerApp {
         }
     }
 }
-
