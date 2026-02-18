@@ -1,1 +1,2 @@
 # PalindroneCheckerApp
+A palindrome is a word, phrase, number, or sequence of characters that reads the same forward and backward, ignoring spaces, punctuation, and capitalization in many cases. In simple terms, if reversing the sequence produces exactly the same result as the original, it is considered a palindrome. Common examples include words like “madam” and “racecar,” as well as numbers like 121. Palindromes are often used in programming exercises and algorithm challenges to practice string manipulation, logical thinking, and pattern recognition.
