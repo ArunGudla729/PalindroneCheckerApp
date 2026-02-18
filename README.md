@@ -11,4 +11,4 @@ Use Case 3 – Reverse String Based Validation
 
 Checks whether a string is a palindrome by reversing it and comparing the reversed string with the original. This method introduces transformation-based validation and reinforces loop control and string manipulation concepts.
 
-The project is structured progressively to build foundational logic before introducing more advanced techniques.
+The project is structured progressively to build foundational logic before introducing more advanced techniques.ABCDEF
