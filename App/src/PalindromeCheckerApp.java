@@ -18,7 +18,7 @@
  *
  * This introduces transformation-based validation.
  *
- * @author Developer
+ * @ArunSriramGudla
  * @version 3.0
  */
 public class UseCase3PalindromeCheckerApp {
