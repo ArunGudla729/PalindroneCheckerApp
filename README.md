@@ -1,51 +1,45 @@
-
-# 📘 UC4 – Character Array Based Palindrome Checker
+# 📦 UC5 – Stack-Based Palindrome Checker
 
 ## 📌 Overview
+This project demonstrates a Palindrome Checker implemented in Java using a Stack data structure.
 
-This project demonstrates a **Palindrome Checker** implemented in Java using a **Character Array (`char[]`)** and the **Two-Pointer Technique**.
-
-The program converts a string into a character array and compares characters from both ends to determine whether the string is a palindrome.
+The Stack follows the Last In First Out (LIFO) principle, which naturally reverses the order of characters. This property is used to validate whether a string is a palindrome.
 
 ---
 
 ## 🎯 Goal
-
-Convert a string into a `char[]` and efficiently compare characters using index-based access without creating extra objects.
+Use Stack to reverse characters and validate palindrome.
 
 ---
 
 ## 🔁 Program Flow
-
-1. Convert input string to `char[]`
-2. Initialize two pointers:
-
-    * `start` → beginning of array
-    * `end` → last index of array
-3. Compare characters at both pointers
-4. Move pointers toward center
-5. Return result
+1. Push characters into stack
+2. Pop characters in reverse order
+3. Compare popped characters with original string
+4. Print result
 
 ---
 
 ## 🧠 Key Concepts Used
 
-### 🔹 Character Array (`char[]`)
+### 🔹 Stack
+A linear data structure that follows the Last In First Out (LIFO) principle.
 
-A primitive array used to store individual characters for efficient index-based access.
+### 🔹 Push Operation
+Used to insert characters into the stack.
 
-### 🔹 Array Indexing
+### 🔹 Pop Operation
+Used to remove characters from the stack in reverse order.
 
-Access elements using index positions starting from `0`.
+### 🔹 Reversal Logic
+Stack naturally reverses the order of elements, making it suitable for palindrome validation.
 
-### 🔹 Two-Pointer Technique
+---
 
-One pointer starts from the beginning and the other from the end, reducing unnecessary comparisons.
+## ⏱ Complexity Analysis
+- Time Complexity: O(n)
+- Space Complexity: O(n)  (Extra stack memory)
 
-### 🔹 Time Complexity Awareness
-
-Efficient comparison without creating extra objects.
-
-* **Time Complexity:** `O(n)`
-* **Space Complexity:** `O(1)`
-
+---
+## 📌 Version
+v5.0
