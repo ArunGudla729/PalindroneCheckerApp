@@ -1,80 +1,130 @@
 /**
  * ============================================================
- * MAIN CLASS – UseCase7PalindromeCheckerApp
+ * MAIN CLASS – UseCase8PalindromeCheckerApp
  * ============================================================
  *
- * Use Case 7: Deque Based Optimized Palindrome Checker
+ * Use Case 8: Linked List Based Palindrome Checker
  *
  * Description:
- * This class validates a palindrome using a Deque
- * (Double Ended Queue).
+ * This class checks whether a string is a palindrome
+ * using a LinkedList.
  *
- * Characters are inserted into the deque and then
- * compared by removing elements from both ends:
+ * Characters are added to the list and then compared
+ * by removing elements from both ends:
  *
  *  - removeFirst()
  *  - removeLast()
  *
- * This avoids reversing the string and provides an
- * efficient front-to-back comparison approach.
- *
- * This use case demonstrates optimal bidirectional
- * traversal using Deque.
+ * This demonstrates how LinkedList supports
+ * double-ended operations for symmetric validation.
  *
  * @ArunSriramGudla
- * @version 7.0
+ * @version 8.0
  */
-
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC7.
+     * Node class representing singly linked list node
+     */
+    static class Node {
+        char data;
+        Node next;
+
+        Node(char data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    /**
+     * Application entry point for UC8.
      * @param args Command-line arguments
      */
     public static void main(String[] args) {
 
-        String input = "refer";
+        String input = "level"; // predefined input (can modify)
 
         boolean result = isPalindrome(input);
 
+        System.out.println("===== UC8: Linked List Based Palindrome Checker =====");
+        System.out.println("Input: " + input);
+
         if (result) {
-            System.out.println("Result: The given string is a palindrome.");
+            System.out.println("Result: The given string IS a palindrome.");
         } else {
             System.out.println("Result: The given string is NOT a palindrome.");
         }
-
     }
 
     /**
-     * Checks whether a string is palindrome using Deque
+     * Checks palindrome using singly linked list
      */
     public static boolean isPalindrome(String input) {
 
-        // Remove spaces and convert to lowercase
         input = input.replaceAll("\\s+", "").toLowerCase();
 
-        Deque<Character> deque = new ArrayDeque<>();
-
-        // Insert characters into deque
-        for (char ch : input.toCharArray()) {
-            deque.addLast(ch);
+        if (input.length() == 0 || input.length() == 1) {
+            return true;
         }
 
-        // Compare front and rear characters
-        while (deque.size() > 1) {
+        // Step 1: Convert string to singly linked list
+        Node head = null;
+        Node tail = null;
 
-            char front = deque.removeFirst();
-            char rear = deque.removeLast();
-
-            if (front != rear) {
-                return false;
+        for (char ch : input.toCharArray()) {
+            Node newNode = new Node(ch);
+            if (head == null) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                tail.next = newNode;
+                tail = newNode;
             }
         }
 
+        // Step 2: Find middle using fast and slow pointer
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        // Step 3: Reverse second half
+        Node secondHalf = reverseList(slow);
+
+        // Step 4: Compare first half and reversed second half
+        Node firstHalf = head;
+        Node tempSecond = secondHalf;
+
+        while (tempSecond != null) {
+            if (firstHalf.data != tempSecond.data) {
+                return false;
+            }
+            firstHalf = firstHalf.next;
+            tempSecond = tempSecond.next;
+        }
+
         return true;
+    }
+
+    /**
+     * Reverses a linked list in-place
+     */
+    public static Node reverseList(Node head) {
+        Node prev = null;
+        Node current = head;
+        Node nextNode;
+
+        while (current != null) {
+            nextNode = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextNode;
+        }
+
+        return prev;
     }
 }
