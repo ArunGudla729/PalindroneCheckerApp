@@ -1,26 +1,14 @@
-📄 README: Strategy Pattern for Palindrome Algorithms
-📝 Overview
-This project demonstrates Use Case 12, focusing on the Strategy Design Pattern. Instead of hardcoding a single way to check for palindromes, this architecture allows the application to switch between different data structures (Stack vs. Deque) at runtime without changing the core application logic.
-
-🚀 Key Features
-Dynamic Interchangeability: Switch algorithms on the fly using setStrategy().
-
-Extensible Design: Easily add a TwoPointerStrategy or RecursionStrategy by simply implementing the PalindromeStrategy interface.
-
-Clean Separation: The main app doesn't need to know how the palindrome is checked, only that the result is a boolean.
-
-🛠 Concepts Used
-Interface: Defines the isValid contract.
-
-Polymorphism: The app treats different objects (Stack/Deque) as the generic PalindromeStrategy type.
-
-Dependency Injection: The specific algorithm is "injected" into the main class at runtime.
-
-📋 How to Run
-Ensure you have JDK 8 or higher installed.
-
-Save the code as UseCase12PalindromeCheckerApp.java.
-
-Compile: javac UseCase12PalindromeCheckerApp.java
-
-Run: java UseCase12PalindromeCheckerApp
+📖 README: UC13 Performance Comparison🎯 
+Goal
+To transition from functional code to performant code by measuring how long specific algorithms take to execute in nanoseconds ($ns$).
+🔍 Key ConceptsSystem.nanoTime(): 
+Unlike currentTimeMillis(), this provides the most precise available system timer for measuring elapsed time.
+Benchmarking: The process of running a specific task and measuring its performance metrics.
+Overhead: Understanding that different data structures (like Stack) have different memory and time costs.
+🛠 Execution InstructionsTo match the requirements shown in your provided image, follow these terminal commands:
+Compile the program:javac UseCase13PalindromeCheckerApp.
+javaRun the program:java UseCase13PalindromeCheckerApp
+📊 Expected Output FormatPlaintextInput : level
+Is Palindrome? : true
+Execution Time : 852600 ns
+(Note: The exact nanosecond count will vary based on your CPU speed at the moment of execution).

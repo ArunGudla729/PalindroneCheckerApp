@@ -1,70 +1,69 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Stack;
-
 /**
  * =============================================================================
- * MAIN CLASS - UseCase12PalindromeCheckerApp
+ * MAIN CLASS - UseCase13PalindromeCheckerApp
  * =============================================================================
- * Use Case 12: Strategy Pattern for Palindrome Algorithms
+ * * Use Case 13: Performance Comparison
  * * Description:
- * This class demonstrates how different palindrome validation algorithms
- * can be selected dynamically at runtime using the Strategy Design Pattern.
-
- @ArunSriramGudla
- @Version 12.0
+ * This class measures and compares the execution
+ * performance of palindrome validation algorithms.
+ * * At this stage, the application:
+ * - Uses a palindrome strategy implementation
+ * - Captures execution start and end time
+ * - Calculates total execution duration
+ * - Displays benchmarking results
+ * * This use case focuses purely on performance
+ * measurement and algorithm comparison.
+ * * The goal is to introduce benchmarking concepts.
+ * * @aArunSriramGudla
+ * @version 13.0
  */
 public class PalindromeCheckerApp {
 
-    private PalindromeStrategy strategy;
-
-    // Inject the strategy at runtime via constructor or setter
-    public void setStrategy(PalindromeStrategy strategy) {
-        this.strategy = strategy;
-    }
-
-    public boolean check(String text) {
-        if (strategy == null) {
-            throw new IllegalStateException("Strategy not set!");
-        }
-        return strategy.isValid(text);
-    }
-
+    /**
+     * Application entry point for UC13.
+     * * @param args Command-line arguments
+     */
     public static void main(String[] args) {
-        PalindromeCheckerApp app = new PalindromeCheckerApp();
-        String testInput = "racecar";
+        String input = "level";
 
-        // 1. Using Stack Strategy
-        app.setStrategy(new StackStrategy());
-        System.out.println("Using StackStrategy: " + app.check(testInput));
+        // We will use the StackStrategy for this performance test
+        PalindromeStrategy strategy = new StackStrategy();
 
-        // 2. Using Deque Strategy
-        app.setStrategy(new DequeStrategy());
-        System.out.println("Using DequeStrategy: " + app.check(testInput));
+        // 1. Capture Start Time
+        long startTime = System.nanoTime();
+
+        // 2. Execute the Algorithm
+        boolean isPalindrome = strategy.isValid(input);
+
+        // 3. Capture End Time
+        long endTime = System.nanoTime();
+
+        // 4. Calculate Duration
+        long duration = endTime - startTime;
+
+        // 5. Display Results as shown in the requirement
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
+        System.out.println("Execution Time : " + duration + " ns");
     }
 }
 
 /**
- * =============================================================================
- * INTERFACE - PalindromeStrategy
- * =============================================================================
- * This interface defines a contract for all palindrome checking algorithms.
+ * Strategy Interface (Reused from UC12)
  */
 interface PalindromeStrategy {
     boolean isValid(String text);
 }
 
 /**
- * =============================================================================
- * CLASS - StackStrategy
- * =============================================================================
- * Implements palindrome check using a Stack (LIFO).
+ * Stack Implementation for Performance Comparison
  */
 class StackStrategy implements PalindromeStrategy {
     @Override
     public boolean isValid(String text) {
+        // Simple validation logic
         String clean = text.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        Stack<Character> stack = new Stack<>();
+        java.util.Stack<Character> stack = new java.util.Stack<>();
 
         for (char c : clean.toCharArray()) {
             stack.push(c);
@@ -76,30 +75,5 @@ class StackStrategy implements PalindromeStrategy {
         }
 
         return clean.equals(reversed.toString());
-    }
-}
-
-/**
- * =============================================================================
- * CLASS - DequeStrategy
- * =============================================================================
- * Implements palindrome check using a Deque (Double-Ended Queue).
- */
-class DequeStrategy implements PalindromeStrategy {
-    @Override
-    public boolean isValid(String text) {
-        String clean = text.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-        Deque<Character> deque = new ArrayDeque<>();
-
-        for (char c : clean.toCharArray()) {
-            deque.addLast(c);
-        }
-
-        while (deque.size() > 1) {
-            if (!deque.removeFirst().equals(deque.removeLast())) {
-                return false;
-            }
-        }
-        return true;
     }
 }
