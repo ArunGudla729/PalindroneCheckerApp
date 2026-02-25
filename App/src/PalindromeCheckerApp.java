@@ -1,47 +1,38 @@
 /**
  * =====================================================
- * MAIN CLASS – UseCase4PalindromeCheckerApp
+ * MAIN CLASS – UseCase5PalindromeCheckerApp
  * =====================================================
  *
- * Use Case 4: Character Array Based Validation
+ * Use Case 5: Stack Based Palindrome Checker
  *
  * Description:
- * This class validates a palindrome by converting
- * the string into a character array and comparing
- * characters using the two-pointer technique.
+ * This class validates a palindrome using a Stack
+ * data structure which follows the LIFO principle.
  *
- * At this stage, the application:
- * - Converts string to char array
- * - Uses start and end pointers
- * - Compares characters efficiently
+ * Flow:
+ * - Pushes characters into a stack
+ * - Pops them in reverse order
+ * - Compares with original sequence
  * - Displays the result
  *
- * This reduces extra memory usage.
+ * This maps stack behavior to reversal logic.
  *
  * @ArunSriramGudla
- * @version 4.0
+ * @version 5.0
  */
 
-/**
- * =====================================================
- * UC4: Character Array Based Palindrome Check
- * =====================================================
- * Goal:
- * Convert string to character array and compare characters
- * using two-pointer technique.
- *
- * Key Concepts:
- * - Character Array (char[])
- * - Array Indexing
- * - Two-Pointer Technique
- * - Time Complexity Awareness (O(n))
- */
+import java.util.Stack;
 
-class UseCase4PalindromeCheckerApp {
+class UseCase5PalindromeCheckerApp {
 
+    /**
+     * Application entry point for UC5.
+     *
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
 
-        String input = "madam";
+        String input = "noon";   // Change input here
 
         boolean result = isPalindrome(input);
 
@@ -54,26 +45,22 @@ class UseCase4PalindromeCheckerApp {
 
     /**
      * Checks whether a given string is a palindrome
-     * using character array and two-pointer approach.
+     * using Stack (LIFO principle).
      */
     public static boolean isPalindrome(String str) {
 
-        // Convert string to char array
-        char[] characters = str.toCharArray();
+        Stack<Character> stack = new Stack<>();
 
-        // Two pointers
-        int start = 0;
-        int end = characters.length - 1;
+        // Push characters into stack
+        for (int i = 0; i < str.length(); i++) {
+            stack.push(str.charAt(i));
+        }
 
-        // Compare characters
-        while (start < end) {
-
-            if (characters[start] != characters[end]) {
+        // Pop and compare
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) != stack.pop()) {
                 return false;
             }
-
-            start++;
-            end--;
         }
 
         return true;
