@@ -1,77 +1,62 @@
-# UC8 – Linked List Based Palindrome Checker
+# UC9 – Recursive Palindrome Checker
 
 ## 📌 Goal
-Check whether a string is a palindrome using a Singly Linked List.
+Check whether a string is a palindrome using recursion.
 
 ---
 
 ## 🔁 Flow of Execution
 
-1. Convert string to singly linked list
-2. Find middle using fast and slow pointer
-3. Reverse second half of the list
-4. Compare first half and reversed second half
+1. Compare first and last characters
+2. If matched → recursive call for inner substring
+3. If mismatch → return false
+4. Base condition stops recursion
 
 ---
 
-## 🧠 Key Concepts Used in UC8
+## 🧠 Key Concepts Used in UC9
 
-### 1️⃣ Singly Linked List
-A dynamic data structure where elements are connected using node references.
+### 1️⃣ Recursion
+A technique where a method calls itself to solve smaller subproblems.
 
-Structure:
-Node {
-char data;
-Node next;
-}
+In this case:
+check(s, start + 1, end - 1)
+
 
 ---
 
-### 2️⃣ Node Traversal
-Sequential access to elements using `next` references.
+### 2️⃣ Base Condition
+Prevents infinite recursion and terminates the recursive calls.
+if (start >= end)
+return true;
+
 
 ---
 
-### 3️⃣ Fast and Slow Pointer Technique
-- Slow pointer moves 1 step
-- Fast pointer moves 2 steps
-- When fast reaches end, slow is at middle
+### 3️⃣ Call Stack
+Memory structure used to manage method calls during recursion.
 
-Time Complexity: O(n)
-
----
-
-### 4️⃣ In-Place Reversal
-Second half of the linked list is reversed without using extra memory.
-
-Reversal Logic:
-- Maintain `prev`, `current`, `next`
-- Change `current.next` to `prev`
-
-Space Complexity: O(1)
+Each recursive call:
+- Stores parameters (start, end)
+- Waits for inner call result
+- Returns true/false back up the stack
 
 ---
 
 ## ⚙️ Data Structure Used
 
-**Singly Linked List (Custom Node Implementation)**
+**Call Stack**
 
-Operations Used:
-- Node creation
-- Pointer traversal
-- In-place reversal
+No explicit data structure like array or list is used.
+The system stack handles recursive method calls.
 
 ---
 
 ## ▶️ Sample Output
 
-Input:
-hello
+Input:madam
 
-
-Output:
-
-The given string is NOT a palindrome.
+Output:The given string IS a palindrome
 
 
 ---
@@ -79,15 +64,14 @@ The given string is NOT a palindrome.
 ## 📊 Complexity Analysis
 
 Time Complexity: **O(n)**  
-Space Complexity: **O(1)** (In-place reversal)
+Space Complexity: **O(n)** (due to recursive call stack)
 
 ---
 
 ## 🎯 Conclusion
 
-This approach efficiently checks palindrome using:
-- Fast/slow pointer technique
-- In-place linked list reversal
-- Half comparison
+This recursive approach demonstrates:
 
-It avoids extra arrays or stacks and demonstrates optimized linked list manipulation.
+- Divide-and-conquer strategy
+- Proper base condition handling
+- Efficient inward character comparison
