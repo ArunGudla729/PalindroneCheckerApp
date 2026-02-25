@@ -1,77 +1,72 @@
-# UC9 – Recursive Palindrome Checker
+# UC10 – Case-Insensitive & Space-Ignored Palindrome Checker
 
 ## 📌 Goal
-Check whether a string is a palindrome using recursion.
+Check whether a string is a palindrome while:
+
+- Ignoring spaces
+- Ignoring uppercase/lowercase differences
+- Ignoring special symbols
+
+---
+
+## 📝 Description
+
+This program validates a palindrome after preprocessing the input string.
+
+Normalization ensures that formatting differences do not affect logical palindrome validation.
+
+Example:"A man a plan a canal Panama"
+
+Should return:
+true
+
 
 ---
 
 ## 🔁 Flow of Execution
 
-1. Compare first and last characters
-2. If matched → recursive call for inner substring
-3. If mismatch → return false
-4. Base condition stops recursion
+1. Take input string
+2. Normalize string:
+    - Remove spaces and special characters
+    - Convert to lowercase
+3. Compare characters from both ends
+4. If all symmetric characters match → Palindrome
+5. If mismatch found → Not Palindrome
 
 ---
 
-## 🧠 Key Concepts Used in UC9
+## 🧠 Key Concepts Used in UC10
 
-### 1️⃣ Recursion
-A technique where a method calls itself to solve smaller subproblems.
+### 1️⃣ String Preprocessing
+Before checking palindrome, the string is cleaned using:
 
-In this case:
-check(s, start + 1, end - 1)
+```java
+input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
 
+Removes special symbols
 
----
+Removes spaces
 
-### 2️⃣ Base Condition
-Prevents infinite recursion and terminates the recursive calls.
-if (start >= end)
-return true;
+Converts to lowercase
 
+Pattern used:[^a-zA-Z0-9]
 
----
+^ → NOT
 
-### 3️⃣ Call Stack
-Memory structure used to manage method calls during recursion.
+a-z → lowercase letters
 
-Each recursive call:
-- Stores parameters (start, end)
-- Waits for inner call result
-- Returns true/false back up the stack
-
----
-
-## ⚙️ Data Structure Used
-
-**Call Stack**
-
-No explicit data structure like array or list is used.
-The system stack handles recursive method calls.
-
----
-
-## ▶️ Sample Output
-
-Input:madam
-
-Output:The given string IS a palindrome
+A-Z → uppercase letters
 
 
----
+for (int i = 0; i < normalized.length() / 2; i++) {
+    if (normalized.charAt(i) != 
+        normalized.charAt(normalized.length() - 1 - i)) {
+        isPalindrome = false;
+        break;
+    }
+}
 
-## 📊 Complexity Analysis
+📊 Complexity Analysis
 
-Time Complexity: **O(n)**  
-Space Complexity: **O(n)** (due to recursive call stack)
-
----
-
-## 🎯 Conclusion
-
-This recursive approach demonstrates:
-
-- Divide-and-conquer strategy
-- Proper base condition handling
-- Efficient inward character comparison
+Time Complexity: O(n)
+Space Complexity: O(n)
