@@ -1,38 +1,45 @@
 /**
  * =====================================================
- * MAIN CLASS – UseCase5PalindromeCheckerApp
+ * MAIN CLASS – UseCase6PalindromeCheckerApp
  * =====================================================
  *
- * Use Case 5: Stack Based Palindrome Checker
+ * Use Case 6: Queue + Stack Fairness Check
  *
  * Description:
- * This class validates a palindrome using a Stack
- * data structure which follows the LIFO principle.
+ * This class demonstrates palindrome validation using
+ * two different data structures:
  *
- * Flow:
- * - Pushes characters into a stack
- * - Pops them in reverse order
- * - Compares with original sequence
- * - Displays the result
+ * - Queue (FIFO – First In First Out)
+ * - Stack (LIFO – Last In First Out)
  *
- * This maps stack behavior to reversal logic.
+ * Characters are inserted into both structures and then
+ * compared by removing from the front of the queue and
+ * the top of the stack.
+ *
+ * If all characters match, the input string is confirmed
+ * as a palindrome.
+ *
+ * This use case helps understand how FIFO and LIFO
+ * behaviors can be combined for symmetric comparison.
  *
  * @ArunSriramGudla
- * @version 5.0
+ * @version 6.0
  */
 
+import java.util.Queue;
+import java.util.LinkedList;
 import java.util.Stack;
 
-class UseCase5PalindromeCheckerApp {
+public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC5.
+     * Application entry point for UC6.
      *
      * @param args Command-line arguments
      */
     public static void main(String[] args) {
 
-        String input = "noon";   // Change input here
+        String input = "civic";   // Change input here
 
         boolean result = isPalindrome(input);
 
@@ -45,20 +52,27 @@ class UseCase5PalindromeCheckerApp {
 
     /**
      * Checks whether a given string is a palindrome
-     * using Stack (LIFO principle).
+     * using Queue (FIFO) and Stack (LIFO).
      */
     public static boolean isPalindrome(String str) {
 
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Push characters into stack
+        // Enqueue and Push characters
         for (int i = 0; i < str.length(); i++) {
-            stack.push(str.charAt(i));
+            char ch = str.charAt(i);
+            queue.add(ch);     // Enqueue (FIFO)
+            stack.push(ch);    // Push (LIFO)
         }
 
-        // Pop and compare
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) != stack.pop()) {
+        // Compare dequeue vs pop
+        while (!queue.isEmpty()) {
+
+            char fromQueue = queue.remove();  // Dequeue
+            char fromStack = stack.pop();     // Pop
+
+            if (fromQueue != fromStack) {
                 return false;
             }
         }
