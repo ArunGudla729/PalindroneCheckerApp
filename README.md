@@ -1,66 +1,93 @@
-# UC7 – Deque-Based Optimized Palindrome Checker
+# UC8 – Linked List Based Palindrome Checker
 
 ## 📌 Goal
-Use a Deque data structure to compare front and rear elements to determine whether a string is a palindrome.
+Check whether a string is a palindrome using a Singly Linked List.
 
 ---
 
 ## 🔁 Flow of Execution
 
-1. Insert characters into Deque
-2. Remove first and last elements
-3. Compare both characters
-4. Continue until deque becomes empty or mismatch occurs
+1. Convert string to singly linked list
+2. Find middle using fast and slow pointer
+3. Reverse second half of the list
+4. Compare first half and reversed second half
 
 ---
 
-## 🧠 Key Concepts Used in UC7
+## 🧠 Key Concepts Used in UC8
 
-### 1️⃣ Deque (Double Ended Queue)
-A data structure that allows insertion and deletion from both front and rear ends.
+### 1️⃣ Singly Linked List
+A dynamic data structure where elements are connected using node references.
 
-Java Implementation Used:
-
----
-
-### 2️⃣ Front and Rear Access
-- `removeFirst()` → Removes element from front
-- `removeLast()` → Removes element from rear
-
-This enables direct comparison of first and last characters.
+Structure:
+Node {
+char data;
+Node next;
+}
 
 ---
 
-### 3️⃣ Optimized Data Handling
-- No string reversal required
-- No extra stack or array needed
-- Efficient bidirectional traversal
+### 2️⃣ Node Traversal
+Sequential access to elements using `next` references.
+
+---
+
+### 3️⃣ Fast and Slow Pointer Technique
+- Slow pointer moves 1 step
+- Fast pointer moves 2 steps
+- When fast reaches end, slow is at middle
+
+Time Complexity: O(n)
+
+---
+
+### 4️⃣ In-Place Reversal
+Second half of the linked list is reversed without using extra memory.
+
+Reversal Logic:
+- Maintain `prev`, `current`, `next`
+- Change `current.next` to `prev`
+
+Space Complexity: O(1)
 
 ---
 
 ## ⚙️ Data Structure Used
 
-**Deque (ArrayDeque implementation)**
+**Singly Linked List (Custom Node Implementation)**
 
 Operations Used:
-- `addLast()`
-- `removeFirst()`
-- `removeLast()`
-
-Time Complexity: **O(n)**  
-Space Complexity: **O(n)**
+- Node creation
+- Pointer traversal
+- In-place reversal
 
 ---
 
-## ▶️ Sample Input / Output
+## ▶️ Sample Output
 
-Input:hello
+Input:
+hello
+
+
 Output:
+
 The given string is NOT a palindrome.
+
+
+---
+
+## 📊 Complexity Analysis
+
+Time Complexity: **O(n)**  
+Space Complexity: **O(1)** (In-place reversal)
 
 ---
 
 ## 🎯 Conclusion
 
-This use case demonstrates optimal bidirectional traversal using Deque.  
-It eliminates the need for reversing the string and provides an efficient front-to-back comparison approach.
+This approach efficiently checks palindrome using:
+- Fast/slow pointer technique
+- In-place linked list reversal
+- Half comparison
+
+It avoids extra arrays or stacks and demonstrates optimized linked list manipulation.
