@@ -1,14 +1,51 @@
-# PalindroneCheckerApp
-Palindrome Checker Application
 
-This project demonstrates multiple approaches to validating whether a string is a palindrome in Java. Each use case introduces a different technique to reinforce fundamental programming concepts.
+# 📘 UC4 – Character Array Based Palindrome Checker
 
-Use Case 2 – Direct Character Comparison
+## 📌 Overview
 
-Validates a hardcoded string by comparing characters from both ends using a two-pointer approach. It introduces basic string traversal and conditional logic without additional data structures.
+This project demonstrates a **Palindrome Checker** implemented in Java using a **Character Array (`char[]`)** and the **Two-Pointer Technique**.
 
-Use Case 3 – Reverse String Based Validation
+The program converts a string into a character array and compares characters from both ends to determine whether the string is a palindrome.
 
-Checks whether a string is a palindrome by reversing it and comparing the reversed string with the original. This method introduces transformation-based validation and reinforces loop control and string manipulation concepts.
+---
 
-The project is structured progressively to build foundational logic before introducing more advanced techniques.ABCDEF
+## 🎯 Goal
+
+Convert a string into a `char[]` and efficiently compare characters using index-based access without creating extra objects.
+
+---
+
+## 🔁 Program Flow
+
+1. Convert input string to `char[]`
+2. Initialize two pointers:
+
+    * `start` → beginning of array
+    * `end` → last index of array
+3. Compare characters at both pointers
+4. Move pointers toward center
+5. Return result
+
+---
+
+## 🧠 Key Concepts Used
+
+### 🔹 Character Array (`char[]`)
+
+A primitive array used to store individual characters for efficient index-based access.
+
+### 🔹 Array Indexing
+
+Access elements using index positions starting from `0`.
+
+### 🔹 Two-Pointer Technique
+
+One pointer starts from the beginning and the other from the end, reducing unnecessary comparisons.
+
+### 🔹 Time Complexity Awareness
+
+Efficient comparison without creating extra objects.
+
+* **Time Complexity:** `O(n)`
+* **Space Complexity:** `O(1)`
+
